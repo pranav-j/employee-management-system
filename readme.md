@@ -10,12 +10,13 @@
 <ul>
   <li>Employee management</li>
   <li>Authentication with email verification</li>
-  <li>Responsive design</li>
+  <li>Viewing details of an individual employee</li>
+  <li>Deletion & editing of employees</li>
 </ul>
 
 <h2>Installation</h2>
 <ol>
-  <li>Clone the repository: <code>git clone https://github.com/your-username/employee-management-system.git</code></li>
+  <li>Clone the repository: <code>git clone https://github.com/pranav-j/employee-management-system.git</code></li>
   <li>Navigate to the project directory: <code>cd employee-management-system</code></li>
   <li>Install dependencies: <code>npm install</code></li>
   <li>Create a <code>.env</code> file and configure your environment variables.</li>
@@ -36,3 +37,5 @@
     <img src="https://img.shields.io/github/stars/your-username/employee-management-system?style=social" alt="GitHub Stars">
   </a>
 </div>
+
+hehe
