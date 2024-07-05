@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODE EMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+    integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-body">
+    <div class="w-max">
+      <div class="side-bar">
+        <div class="side-title">
+          <h3>Employee</h3>
+          <p>Management</p>
+        </div>
+
+        <div class="side-menu">
+          <a href="/"><i class="fa-solid fa-house"></i>Dashboard</a>
+          <a href="/"><i class="fa-solid fa-chart-simple"></i>Employees</a>
+          <a href="#"><i class="fa-solid fa-user"></i>My Profile</a>
+          <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+        </div>
+
+        <div class="side-footer">
+          <img src="powered-by.png" alt="pewrrrrr">
+        </div>
+      </div>
+      <div class="main">
+        <div class="main-title">
+          <div class="title">
+            <p>Dashboard / Employees</p>
+            <h2>Employees</h2>
+          </div>
+
+
+
+          <div class="search-profile">
+            <!-- <form action="/search" method="get" id="search-bar">
+              <input type="text" name="searchTerm" class="search" placeholder="Search" required>
+              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form> -->
+            <form action="/search" method="get" id="search-bar">
+              <input type="text" name="searchTerm" class="search" placeholder="Search" value="<%= searchTerm %>" required>
+              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <input type="hidden" name="limit" value="<%= limit %>">
+              <input type="hidden" name="page" value="<%= currentPage %>">
+            </form>
+            <i class="fa-regular fa-bell"></i>
+            <img src="profile.png" alt="padam">
+          </div>
+        </div>
+        <div class="employee-list">
+          <div class="employee-list-heading">
+            <div class="employee-list-heading-left">
+              <h4>Employees List</h4>
+              <form id="limit-form" action="/" method="get">
+                <select class="no-of-profiles" name="limit" onchange="document.getElementById('limit-form').submit()">
+                  <option value="5" <%= limit == 5 ? 'selected' : '' %>>5</option>
+                  <option value="3" <%= limit == 3 ? 'selected' : '' %>>3</option>
+                  <option value="1" <%= limit == 1 ? 'selected' : '' %>>1</option>
+                  <option value="15" <%= limit == 15 ? 'selected' : '' %>>15</option>
+                  <option value="20" <%= limit == 20 ? 'selected' : '' %>>20</option>
+                </select>
+                <input type="hidden" name="page" value="<%= currentPage %>">
+              </form>
+              <!-- <p>of <span></span></p> -->
+            </div>
+
+            <button class="add-employee-btn">Add Employee</button>
+          </div>
+
+          <div class="table-section">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:3%">Sl.No</th>
+                  <th style="width:22%">Name</th>
+                  <th style="width:20%">Email</th>
+                  <th style="width:10%">Phone</th>
+                  <th style="width:7%">Gender</th>
+                  <th style="width:14%">DOB</th>
+                  <th style="width:8%">Country</th>
+                  <th style="width:6%">...</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- <tr>
+                                <td>#01</td>
+                                <td><img src="profile.png" alt="the guy">Madison</td>
+                                <td>michaeljohnson@example.com</td>
+                                <td>5551234567</td>
+                                <td>Male</td>
+                                <td>10 December 1985</td>
+                                <td class="button-div">
+                                    <div>USA</div> <button><i class="fa-solid fa-ellipsis"></i></button>
+                                        <div class="options">
+                                          <a href="#" class="details">View Details</a>
+                                          <a href="#" class="edit">Edit </a>
+                                          <a href="#" class="delete">Delete </a>
+                                        </div>
+                                    
+                                </td>
+                            </tr> -->
+
+                  <% employees.forEach(function(employee, index) { %>
+                    <tr id="employee-<%= employee._id %>">
+                      <td>#<%= index + 1 %></td>
+                      <td><img src="<%= employee.avatar %>" alt="Profile Image" style="height:50px; width:50px;"> <%= employee.salutation %> <%= employee.firstName %> <%= employee.lastName %></td>
+                      <td><%= employee.email %></td>
+                      <td><%= employee.phone %></td>
+                      <td><%= employee.gender %></td>
+                      <td><%= employee.dob.toDateString() %></td>
+                      <td><%= employee.country %></td>
+                      <td>
+                        <div class="button-div">
+                          <!-- <div><%= employee.country %></div> -->
+                          <button class="options-button"><i class="fa-solid fa-ellipsis"></i></button>
+                          <div class="options">
+                            <a href="/employees-details/<%= employee._id %>" class="details">View Details</a>
+                            <a href="#" class="edit" onclick="editEmployeeVIEW('<%= employee._id %>', '#employee-<%= employee._id %>')">Edit</a>
+                            <a href="#" class="delete-emp-btn" onclick="deleteEmployee('<%= employee._id %>', '#employee-<%= employee._id %>')">Delete</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  <% }); %>
+
+
+              </tbody>
+
+
+
+
+
+            </table>
+          </div>
+
+
+        </div>
+
+
+        <div class="page-list">
+          <div class="pagination">
+            <!-- <% for(let i = 1; i <= totalPages; i++) { %>
+              <a href="?page=<%= i %>&limit=<%= limit %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+            <% } %> -->
+
+
+
+            <!-- <% if (currentPage > 1) { %>
+              <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>">Previous</a>
+            <% } %>
+    
+            <% for(let i = 1; i <= totalPages; i++) { %>
+              <a href="?page=<%= i %>&limit=<%= limit %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+            <% } %>
+    
+            <% if (currentPage < totalPages) { %>
+              <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>">Next</a>
+            <% } %> -->
+
+
+
+            <% if (currentPage > 1) { %>
+              <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>&searchTerm=<%= searchTerm %>">Previous</a>
+            <% } %>
+            <% for(let i = 1; i <= totalPages; i++) { %>
+              <a href="?page=<%= i %>&limit=<%= limit %>&searchTerm=<%= searchTerm %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+            <% } %>
+            <% if (currentPage < totalPages) { %>
+              <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>&searchTerm=<%= searchTerm %>">Next</a>
+            <% } %>
+
+          </div>
+        </div>
+
+
+        <!-- <div class="page-list">
+                    <ul class="pagination">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      </ul>
+                </div> -->
+
+        <footer>
+          <p>© 2023 All Rights Reserved. Stackup</p>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
+        </footer>
+      </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <!-- ADD EMPLOYEE ------------------------------------------------------------------------------------- -->
+
+
+
+    <div class="add-employee">
+      <div class="add-employee-card card col-12 col-lg-6 mb-3 rounded-4">
+        <div class="heading-add-emp">
+          <h3 class="p-3">Add Employee</h3>
+          <button><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+
+        <div class="img-upload-div">
+          <label for="upload-img" class="text-center m-3 rounded-3 py-3 rounded-3 bg-light form-check upload-add-emp rounded-4">
+            <div>
+              <img id="imagePreview">
+            </div>
+            <div>
+              <i class="upload-icon fa-solid fa-download"></i>
+              <h4>Upload image</h4>
+              <form id="image-upload-form" enctype="multipart/form-data" style="display: none;">
+                <input type="file" id="upload-img" name="avatar">
+              </form>
+              <!-- <input type="file" id="upload-img" name="avatar"> -->
+              <h6>png/jpg, files are allowed</h6>
+            </div>
+  
+          </label>
+        </div>
+
+
+        <div class="row congested m-2">
+          <div class="col-md-12 col-lg-4 my-2">
+            <label for="salutation star" class="text form-label star">Salutation</label><span class="error hide-error"
+              id="e1">Choose a salutation</span>
+            <select name="" class="holder shadow-none form-select p-3 rounded-4" id="salutation">
+              <option value="">Select</option>
+              <option value="Mr">Mr</option>
+              <option value="Ms">Ms</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </div>
+          <div class="col-md-12 col-lg-4 my-2">
+            <label for="f-name" class="text form-label star">First name</label><span class="error hide-error"
+              id="e2">Fill First name</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="f-name" placeholder="John">
+          </div>
+          <div class="col-md-12 col-lg-4 my-2">
+            <label for="s-name" class="text form-label star">Second name</label><span class="error hide-error"
+              id="e3">Fill Second name</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="s-name" placeholder="Wick">
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-md-12 col-lg-6 my-2">
+            <label for="mail" class="text form-label star">Email</label><span class="error hide-error" id="e4">Fill
+              Email</span>
+            <input type="email" id="mail" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="luttappi@balarama.com">
+          </div>
+          <div class="col-md-12 col-lg-6 my-2">
+            <label for="num" class="text form-label star">Number</label><span class="error hide-error" id="e5">Must contain 10 digits</span>
+            <input type="text" id="num" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="Enter mobile number">
+          </div>
+        </div>
+
+        <div class="row sex m-2">
+          <div class="col-md-6 my-2">
+            <label for="date" class="text  form-label star">Date of Birth</label><span class="error hide-error"
+              id="e6">Choose correctly</span>
+            <input type="date" id="date" class="holder shadow-none form-control p-3 rounded-4">
+          </div>
+          <div class="col-md-6 my-2">
+            <label for="" class="star text">Gender</label><span class="error hide-error" id="e7">Choose Gender</span>
+            <div class="d-flex f">
+              <div class="col-lg-3 col- form-check m-3">
+                <input type="radio" class="form-check-input rounded-4" value="Male" id="male" name="gender">
+                <label for="male" class="form-check-label light-letter">Male</label>
+              </div>
+              <div class="col-lg-3 col- form-check m-3">
+                <input type="radio" class="form-check-input" value="Female" id="female" name="gender">
+                <label for="female" class="form-check-label light-letter">Female</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-md-12 my-2">
+            <label for="address" class="text form-label star">Address</label><span class="error hide-error" id="e8">Fill
+              Address</span>
+            <input type="text" id="address" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="Enter address">
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-md-12 my-2">
+            <label for="qualification" class="text form-label star">Qualification</label><span class="error hide-error"
+              id="e9">Fill Qualification</span>
+            <input type="text" id="qualification" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="Enter Qualification">
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-lg-6 col-md-12 my-2">
+            <label for="country" class="text form-label star rounded-4">Country</label><span class="error hide-error"
+              id="e10">Choose Country</span>
+            <select name="" class="holder shadow-none form-select p-3 rounded-4" id="country">
+              <option value="">Select Country</option>
+              <option value="Utopia">Utopia</option>
+              <option value="Lokam">Lokam</option>
+              <option value="Pattanam">Pattanam</option>
+            </select>
+          </div>
+          <div class="col-lg-6 col-md-12 my-2">
+            <label for="state" class="text form-label star rounded-4">State</label><span class="error hide-error"
+              id="e11">Choose State</span>
+            <select name="" class="holder shadow-none form-select p-3 rounded-4" id="state">
+              <option value="">Select State</option>
+              <option value="Mew">Mew</option>
+              <option value="Rome">Rome</option>
+              <option value="KGF">KGF</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- <div class="row m-2">
+                <div class="col-md-6 my-2">
+                  <label for="userName" class="text form-label star">User Name</label>
+                  <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="userName" placeholder="Enter User Name">
+                </div>
+                <div class="col-md-6 my-2">
+                  <label for="password" class="text form-label star">Password</label>
+                  <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="password" placeholder="Enter Password">
+                </div>
+              </div> -->
+
+        <div class="row pb-4 m-2">
+          <div class="col-md-6 my-2">
+            <label for="city" class="text form-label star">City</label><span class="error hide-error" id="e12">Enter your city</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="city" placeholder="Enter city">
+          </div>
+          <div class="col-md-6 my-2">
+            <label for="pin" class="text form-label star">Pin/Zip</label><span class="error hide-error" id="e13">Enter Pin/Zip</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="pin"
+              placeholder="Enter Pin/Zip">
+          </div>
+        </div>
+
+        <div class="common-buttons">
+          <button class="transparent-button" id="cancel-add-emp">Cancel</button>
+          <button class="coloured-button" id="add-emp">Add Employee</button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- EDIT EMPLOYEE ------------------------------------------------------------------------------------- -->
+
+
+    <div class="edit-employee hide-edit" id="edit-employee-form">
+      <div class="add-employee-card card col-12 col-lg-6 mb-3 rounded-4">
+        <div class="heading-edit-emp">
+          <h3 class="p-3">Edit Employee</h3>
+          <button><i class="fa-solid fa-xmark edit-close-btn"></i></button>
+        </div>
+
+        <div class="edit-img-div">
+          <label class="text-center m-3 rounded-3 py-3 rounded-3 bg-light form-check upload rounded-4">
+            <img src="profile.png" class="edit-emp-avatar" id="edit-avatar" alt="pic">
+            <!-- <button type="button" id="change-img">Change</button> -->
+            <!-- <input for="upload" class="styled" type="button" id="upload" value="Change" /> -->
+            <div class="edit-avatar">
+              <h4>Upload image</h4>
+              <form id="image-upload-form-edit" enctype="multipart/form-data" style="display: none;">
+                <input type="file" id="edit-emp-img" name="avatar">
+              </form>
+              <h6>png/jpg, files are allowed</h6>
+            </div>
+  
+            <!-- <button class="upload-button"><input type="file" id="upload">Change</button> -->
+          </label>
+        </div>
+
+
+        <div class="row congested m-2">
+          <div class="col-md-12 col-lg-4 my-2">
+            <label for="salutation star" class="text form-label star">Salutation</label></label><span
+              class="error hide-error" id="ee1">Choose a salutation</span>
+            <select name="" class="holder shadow-none form-select p-3 rounded-4" id="salutation-edit">
+              <option value="">Select</option>
+              <option value="Mr">Mr</option>
+              <option value="Ms">Ms</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </div>
+          <div class="col-md-12 col-lg-4 my-2">
+            <label for="f-name" class="text form-label star">First name</label><span class="error hide-error"
+              id="ee2">Fill First name</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="f-name-edit"
+              placeholder="Daagini">
+          </div>
+          <div class="col-md-12 col-lg-4 my-2">
+            <label for="s-name" class="text form-label star">Second name</label><span class="error hide-error"
+              id="ee3">Fill Second name</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="s-name-edit"
+              placeholder="Ammoomma">
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-md-12 col-lg-6 my-2">
+            <label for="mail" class="text form-label star">Email</label><span class="error hide-error" id="ee4">Fill
+              Email</span>
+            <input type="email" id="mail-edit" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="luttappi@balarama.com">
+          </div>
+          <div class="col-md-12 col-lg-6 my-2">
+            <label for="num" class="text form-label star">Number</label><span class="error hide-error" id="ee5">Must contain 10 digits</span>
+            <input type="text" id="num-edit" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="Enter mobile number">
+          </div>
+        </div>
+
+        <div class="row sex m-2">
+          <div class="col-md-6 my-2">
+            <label for="date" class="text  form-label star">Date of Birth</label><span class="error hide-error"
+              id="ee6">Choose correctly</span>
+            <input type="date" id="date-edit" class="holder shadow-none form-control p-3 rounded-4">
+          </div>
+          <div class="col-md-6 my-2">
+            <label for="" class="star text">Gender</label><span class="error hide-error" id="ee7">Choose Gender</span>
+            <div class="d-flex f">
+              <div class="col-lg-3 col- form-check m-3">
+                <input type="radio" class="form-check-input rounded-4" value="Male" id="male-edit" name="gender">
+                <label for="male-edit" class="form-check-label light-letter">Male</label>
+              </div>
+              <div class="col-lg-3 col- form-check m-3">
+                <input type="radio" class="form-check-input" value="Female" id="female-edit" name="gender">
+                <label for="female-edit" class="form-check-label light-letter">Female</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-md-12 my-2">
+            <label for="address" class="text form-label star">Address</label><span class="error hide-error"
+              id="ee8">Fill Address</span>
+            <input type="text" id="address-edit" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="Enter address">
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-md-12 my-2">
+            <label for="qualification" class="text form-label star">Qualification</label><span class="error hide-error"
+              id="ee9">Fill Qualification</span>
+            <input type="text" id="qualification-edit" class="holder shadow-none form-control p-3 rounded-4"
+              placeholder="Enter Qualification">
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col-lg-6 col-md-12 my-2">
+            <label for="country" class="text form-label star rounded-4">Country</label><span class="error hide-error"
+              id="ee10">Choose Country</span>
+            <select name="" class="holder shadow-none form-select p-3 rounded-4" id="country-edit">
+              <option value="">Select State</option>
+              <option value="Utopia">Utopia</option>
+              <option value="Lokam">Lokam</option>
+              <option value="Pattanam">Pattanam</option>
+            </select>
+          </div>
+          <div class="col-lg-6 col-md-12 my-2">
+            <label for="state" class="text form-label star rounded-4">State</label><span class="error hide-error"
+              id="ee11">Choose State</span>
+            <select name="" class="holder shadow-none form-select p-3 rounded-4" id="state-edit">
+              <option value="">Select State</option>
+              <option value="Mew">Mew</option>
+              <option value="Rome">Rome</option>
+              <option value="KGF">KGF</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row pb-4 m-2">
+          <div class="col-md-6 my-2">
+            <label for="city" class="text form-label star">City</label><span class="error hide-error" id="ee12">Enter your city</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="city-edit"
+              placeholder="Enter city">
+          </div>
+          <div class="col-md-6 my-2">
+            <label for="pin" class="text form-label star">Pin/Zip</label><span class="error hide-error" id="ee13">Enter Pin/Zip</span>
+            <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="pin-edit"
+              placeholder="Enter Pin/Zip">
+          </div>
+        </div>
+
+        <div class="common-buttons">
+          <button class="transparent-button edit-cancel-btn">Cancel</button>
+          <button class="coloured-button edit-save-btn" id="edit-save-btn">Save Changes</button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- DELETE EMPLOYEE ------------------------------------------------------------------------------- -->
+
+    <div class="delete-emp hide-delete">
+      <div class="delete-emp-card">
+        <h3>Delete Empployee<h3>
+            <i class="fa-solid fa-xmark"></i>
+      </div>
+      <p>Are you sure you want to delete this employee?</p>
+      <div class="buttonz">
+        <button class="cancel-btn">Cancel</button>
+        <button class="delete-emp-inner-btn">Delete</button>
+      </div>
+    </div>
+
+    <!-- DELETED POPUP-------------------------------------------------------------------- -->
+    <div class="delete-popup hide-popup">
+      <h3>EMPLOYEE DELETED</h3>
+    </div>
+
+    <!-- ADDED POPUP-------------------------------------------------------------------- -->
+    <div class="add-popup hide-popup">
+      <h3>EMPLOYEE ADDED</h3>
+    </div>
+
+    <!-- EDITTED POPUP-------------------------------------------------------------------- -->
+    <div class="edit-popup hide-popup">
+      <h3>EMPLOYEE EDITTED</h3>
+    </div>
+
+
+    <!-- EMPLOYEE DETAILS -------------------------------------------------------------------------------------- -->
+
+    <!-- <div class="emp-details hide-details">
+      <div class="emp-basic">
+        <div class="emp-background-pic">
+          <img src="Background Image.png" alt="nfggb">
+        </div>
+        <div class="emp-pic">
+          <img src="Elipse 5.png" alt="nfggb" id="emp-details-avatar">
+          <h3 id="emp-details-name"></h3>
+          <p id="emp-details-email"></p>
+        </div>
+      </div>
+
+
+      <div class="emp-advanced">
+        <div class="gender">
+          <h5>Gender</h5>
+          <p id="emp-details-gender"></p>
+        </div>
+        <div class="age">
+          <h5>Age</h5>
+          <p id="emp-details-age"></p>
+        </div>
+        <div class="dob">
+          <h5>Date of Birth</h5>
+          <p id="emp-details-dob"></p>
+        </div>
+      </div>
+
+
+      <div class="num-n-degree">
+        <div class="phn">
+          <h5>Mobile Number</h5>
+          <p id="emp-details-phone"></p>
+        </div>
+        <div class="degree">
+          <h5>Qualifications</h5>
+          <p id="emp-details-qualifications"></p>
+        </div>
+      </div>
+
+
+      <div class="contact">
+        <div class="address">
+          <h5>Address</h5>
+          <p id="emp-details-address"></p>
+        </div>
+        <div class="username">
+          <h5>Username</h5>
+          <p id="emp-details-username"></p>
+        </div>
+      </div>
+
+      <div class="del-edt">
+        <button class="delete" id="delete-in-view">Delete</button>
+        <button class="edit" id="edit-in-view">Edit Details</button>
+      </div>
+      
+    </div> -->
+
+  </div>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

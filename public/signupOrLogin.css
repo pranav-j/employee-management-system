@@ -1,0 +1,49 @@
+/* SIGNUP OR LOGIN CONTAINER */
+.signupOrLogin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2e0b97; /* Light background */
+}
+
+/* SIGNUP OR LOGIN FORM */
+.signupOrLogin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #5c3ee5; /* Main theme color */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff; /* White text color */
+}
+
+.signupOrLogin-form h1 {
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+button.btn {
+    padding: 10px 20px;
+    background-color: #3112cc; /* Darker button color */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button.btn:hover {
+    background-color: #5a35ff; /* Lighter button color on hover */
+}
+
+button.btn a {
+    color: #fff;
+    text-decoration: none;
+}

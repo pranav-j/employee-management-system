@@ -1,0 +1,693 @@
+* {
+    font-family: Montserrat;
+    border: border-box;
+}
+
+h3, p, h2, h4 {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+    background-color: #301F81;
+}
+
+.main-body {
+    position: relative;
+}
+
+.w-max {
+    max-width: 1536px;
+    margin: 0 auto;
+    background-color: rgb(247, 246, 246);
+}
+
+.main {
+    margin-left: 290px;
+}
+
+.side-bar {
+    width: 290px;
+    background: linear-gradient(150deg, #301F81 12.51%, #0F0441 89.53%);
+    height: 100%;
+    position: fixed;
+    /* left: 0; */
+    margin-left: -12px;
+    color: white;
+}
+
+.side-title {
+    padding: 25px;
+    border-bottom: 1px solid rgb(93, 79, 201);
+}
+
+.side-title p {
+    font-size: 18px;
+    margin: 0px;
+}
+
+.side-menu {
+    margin: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-menu svg {
+    margin-right: 15px;
+}
+
+/* .side-footer {
+    
+} */
+
+.side-footer {
+    position: fixed;
+    bottom: 15px;
+}
+
+/* MAIN */
+
+.main-title {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-title p {
+    font-size: 12px;
+    padding-bottom: 11px;
+}
+
+.search-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 999px;
+    padding: 10px;
+    right: 30px;
+    top: 15px;
+}
+
+.search-profile svg {
+    color: rgb(106, 105, 103);
+    padding: 0 15px;
+}
+
+.search-profile img {
+    border-radius: 999px;
+}
+
+.search {
+    background-color: rgb(247, 246, 246);
+    border-color: white;
+    border-style: none;
+    border-radius: 999px;
+    height: 40px;
+    padding-left: 15px;
+}
+
+/* EMPLOYEE LIST */
+
+.employee-list {
+    margin: 0px 15px 15px 15px;
+    padding: 18px 21px;
+    background-color: white;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    min-height: 1000px;
+}
+
+.employee-list-heading {
+    display: flex;
+}
+
+.employee-list-heading-left {
+    display: flex;
+    flex-grow: 3;
+    align-items: center;
+}
+
+.no-of-profiles {
+    border: none;
+    margin: 0px 10px;
+}
+
+.employee-list-heading h4 {
+    font-size: 18px;
+}
+
+.employee-list-heading input {
+    margin: 0 15px 15px 15px;
+    border: 1px solid rgb(219, 213, 213);
+    border-radius: 5px;
+    width: 50px;
+    padding-left: 10px;
+}
+
+.employee-list-heading button {
+    /* position: fixed;
+    right: 30px; */
+    padding: 8px;
+    font-size: 16px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid blue;
+    display: flex;
+    flex-grow: 0;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+}
+
+.button-div button {
+    color: blue;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    margin-right: 45px;
+}
+
+.button-div i {
+    margin: 0;
+    padding: 0;
+}
+
+.button-div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 31px 0;
+}
+
+/* .country-nd-options {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.options {
+    position: absolute;
+    background-color: rgb(255, 243, 243);
+    padding: 15px 15px;
+    border-radius: 7px;
+    z-index: 100;
+    margin-top: 20px;
+    display: none;
+}
+
+.options-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.hide-details {
+    display: none;
+}
+
+.hide-edit {
+    display: none;
+}
+
+.hide-delete {
+    display: none;
+}
+
+.options a {
+    padding: 8px 0; /* Add padding to the top and bottom of each <p> tag */
+    margin: 0; /* Remove default margin */
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    /* background-color: rgb(255, 243, 243); Optional: Match the background of the container */
+}
+
+/* Optional: Remove padding from the first and last <p> for cleaner look */
+.options a:first-child {
+    padding-top: 0;
+}
+
+.options a:last-child {
+    padding-bottom: 0;
+}
+
+table img {
+    border-radius: 99px;
+    margin-right: 7px;
+}
+
+.table-section {
+    margin: 20px 0;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}  
+
+th {
+    text-align: left;
+    color: rgb(223 206 206);
+    /* font-size: 5px; */
+    font-weight: 500;
+}
+
+td {
+    font-weight: 600;
+}
+
+/* PAGINATION */
+
+.pagination {
+    display: flex;
+    gap: 15px;
+}
+
+.pagination button {
+    border: none;
+    border-radius: 5px;
+}
+
+.page-list {
+    display: flex;
+    padding-right: 25px;
+    justify-content: right;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    color: #707EAE;
+    padding: 15px 20px;
+    border-top: 2px solid rgb(193, 192, 205);
+}
+
+footer p {
+    display: flex;
+    flex-grow: 7;
+}
+
+footer a {
+    text-decoration: none;
+    padding-left: 15px;
+    display: flex;
+    flex-grow: 0;
+}
+
+/* ADD EMPLOYEE -------------------------------------------------------------------------------------------*/
+
+#upload-img {
+    display: none;
+}
+
+.upload-add-emp {
+    border: 2px #B2BAD0 dashed;
+}
+
+.error {
+    font-size: 9px;
+    color: red;
+}
+
+.hide-error {
+    display: none;
+}
+
+.employee-avatar {
+    width: 50px; /* or any desired width */
+    height: 50px; /* or any desired height */
+    object-fit: cover; /* This will cover the area without stretching the image */
+    border-radius: 50%; /* Optional: if you want round images */
+}
+
+.add-employee {
+    width: 100%;
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    overflow: scroll;
+    /* max-height: 700px; */
+
+/* --------------------------------- */
+
+    top: 550px;
+}
+
+.heading-add-emp, .heading-edit-emp {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    justify-content: space-between;
+    /* margin-bottom: 20px; */
+    padding: 10px 20px;
+}
+
+.heading-add-emp svg,.heading-edit-emp svg {
+    cursor: pointer;
+    padding: 10px 13px;
+    font-size: 25px;
+    color: #4318FF;
+    background-color: #d0d8ec;
+    border-radius: 5px;
+}
+
+.heading-add-emp button, .heading-edit-emp button {
+    border: none;
+    background-color: white;
+}
+
+.add-employee-show {
+    display: flex;
+    top: 43px;
+}
+
+.add-employee-card{
+    max-width: 765px;
+}
+
+.upload {
+    border:2px #B2BAD0 dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.upload-icon {
+    color: #4318FF;
+}
+
+.upload h4 {
+    color: #4318FF;
+    font-size: 16px;
+    font-weight: 700;
+}
+.upload h6 {
+    color: #8F9BBA;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#upload {
+    display: none;
+}
+
+.star::after {
+    content: " *";
+    color: red;
+}
+
+.common-buttons {
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.transparent-button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 13px;
+}
+
+.coloured-button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 13px;
+    background-color: #4318FF;
+    ;
+    color: white;
+}
+
+/* EDIT EMPLOYEE -------------------------------------------------------------------------------------------*/
+
+.edit-emp-avatar {
+    max-width: 150px;
+    max-height: 200px;
+}
+
+.edit-employee {
+    width: 100%;
+    /* display: flex; */
+    /* display: none; */
+    overflow: scroll;
+    max-height: 650px;
+
+    
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    /* top: 1550px; */
+    left: 450px;
+    top: 115px;
+
+}
+
+.upload-button {
+    border: none;
+    border-radius: 15px;
+    color: #4318FF;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px 20px;
+}
+
+/* DELETE EMPLOYEE */
+
+.deleted {
+    height: 150px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: rgb(235, 64, 64);
+    color: white;
+    display: flex;
+    padding: 0px 50px;
+    text-align: center;
+    align-items: center;
+    position: absolute;
+    top: 250px;
+    left: 750px;
+}
+
+.hide-deleted {
+    display: none;
+}
+
+.delete-emp {
+    /* width: 100%; */
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    position: absolute;
+    max-width: 800px;
+    top: 150px;
+    left: 350px;
+    right: 350px;
+    border-radius: 13px;
+    background-color: #F4F7FE;
+    padding: 30px 30px;
+    margin-bottom: 20px;
+}
+
+.delete-emp-card {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.delete-emp-card h3 {
+    margin: 0;
+}
+
+.delete-emp-card svg {
+    cursor: pointer;
+    padding: 10px 13px;
+    font-size: 25px;
+    color: #4318FF;
+    background-color: #d0d8ec;
+    border-radius: 5px;
+}
+
+.delete-emp p {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.buttonz {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.delete-btn {
+    background-color: rgb(205, 64, 64);
+    color: white;
+}
+
+.delete-emp button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 13px;
+}
+
+/* EMPLOYEE DETAILS */
+
+.emp-details {
+    padding: 20px;
+    background-color: white;
+    max-width: 773px;
+    border-radius: 13px;
+
+    position: absolute;
+
+    /* display: none; */
+
+    top: 107px;
+    left: 500px;
+
+    /* max-height: 650px; */
+    /* overflow: scroll; */
+}
+
+.emp-basic {
+    position: relative;
+}
+
+.emp-background-pic {
+    padding-bottom: 150px;
+}
+
+.emp-pic {
+    position: absolute;
+    top: 130px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.emp-pic img {
+    border-radius: 999px;
+    margin-bottom: 30px;
+    max-width: 140px;
+    max-height: 110px;
+    border: 5px solid white;
+}
+
+/* ------------------- */
+
+.emp-advanced {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.gender, .age, .dob {
+    width: 33%;
+    border-radius: 13px;
+    box-shadow: 10px 10px 83px -11px rgba(0,0,0,0.53);
+    padding: 20px;
+}
+
+/* --------------------------- */
+
+.num-n-degree {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.degree, .phn {
+    width: 50%;
+    border-radius: 13px;
+    box-shadow: 10px 10px 83px -11px rgba(0,0,0,0.53);
+    padding: 20px;
+}
+
+/* --------------------------------- */
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.address, .username {
+    width: 50%;
+    border-radius: 13px;
+    box-shadow: 10px 10px 83px -11px rgba(0,0,0,0.53);
+    padding: 20px;
+}
+
+/* ------------------- */
+
+.del-edt {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.del-edt button {
+    border: none;
+    border-radius: 13px;
+    padding: 18px 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.del-edt .delete {
+    background-color: rgb(205, 64, 64);
+}
+
+.del-edt .edit {
+    background-color: blue;
+}
+
+/* BLURR */
+
+.blur {
+    filter: blur(15px);
+    /* background: linear-gradient(150deg, #301F81 12.51%, #0F0441 89.53%); */
+}
+

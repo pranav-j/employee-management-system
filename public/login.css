@@ -1,0 +1,62 @@
+/* LOGIN CONTAINER */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2e0b97; /* Light background */
+}
+
+/* LOGIN FORM */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #5c3ee5; /* Main theme color */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff; /* White text color */
+}
+
+.login-form h1 {
+    margin-bottom: 20px;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
+    margin-bottom: 5px;
+}
+
+.field input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #3112cc; /* Darker button color */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5a35ff; /* Lighter button color on hover */
+}
