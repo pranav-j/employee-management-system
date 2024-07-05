@@ -37,5 +37,3 @@
     <img src="https://img.shields.io/github/stars/pranav-j/employee-management-system?style=social" alt="GitHub Stars">
   </a>
 </div>
-
-hehe
