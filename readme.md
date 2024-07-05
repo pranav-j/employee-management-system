@@ -34,7 +34,7 @@
 
 <div style="text-align:center;">
   <a href="https://github.com/pranav-j/employee-management-system">
-    <img src="https://img.shields.io/github/stars/your-username/employee-management-system?style=social" alt="GitHub Stars">
+    <img src="https://img.shields.io/github/stars/pranav-j/employee-management-system?style=social" alt="GitHub Stars">
   </a>
 </div>
 
