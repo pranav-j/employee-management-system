@@ -24,7 +24,7 @@
 </ol>
 
 <h2>Usage</h2>
-<p>After installing and starting the application, navigate to <a href="http://localhost:3000">http://localhost:3000</a> to use the Employee Management System.</p>
+<p>After installing and starting the application, navigate to <a href="http://localhost:3003">http://localhost:3003</a> to use the Employee Management System.</p>
 
 <h2>Contributing</h2>
 <p>Contributions are welcome! Please open an issue or submit a pull request.</p>
@@ -33,7 +33,7 @@
 <p>This project is licensed under the MIT License.</p>
 
 <div style="text-align:center;">
-  <a href="https://github.com/your-username/employee-management-system">
+  <a href="https://github.com/pranav-j/employee-management-system">
     <img src="https://img.shields.io/github/stars/your-username/employee-management-system?style=social" alt="GitHub Stars">
   </a>
 </div>
