@@ -51,10 +51,7 @@
 
 
           <div class="search-profile">
-            <!-- <form action="/search" method="get" id="search-bar">
-              <input type="text" name="searchTerm" class="search" placeholder="Search" required>
-              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form> -->
+
             <form action="/search" method="get" id="search-bar">
               <input type="text" name="searchTerm" class="search" placeholder="Search" value="<%= searchTerm %>" required>
               <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -101,23 +98,6 @@
               </thead>
 
               <tbody>
-                <!-- <tr>
-                                <td>#01</td>
-                                <td><img src="profile.png" alt="the guy">Madison</td>
-                                <td>michaeljohnson@example.com</td>
-                                <td>5551234567</td>
-                                <td>Male</td>
-                                <td>10 December 1985</td>
-                                <td class="button-div">
-                                    <div>USA</div> <button><i class="fa-solid fa-ellipsis"></i></button>
-                                        <div class="options">
-                                          <a href="#" class="details">View Details</a>
-                                          <a href="#" class="edit">Edit </a>
-                                          <a href="#" class="delete">Delete </a>
-                                        </div>
-                                    
-                                </td>
-                            </tr> -->
 
                   <% employees.forEach(function(employee, index) { %>
                     <tr id="employee-<%= employee._id %>">
@@ -158,25 +138,6 @@
 
         <div class="page-list">
           <div class="pagination">
-            <!-- <% for(let i = 1; i <= totalPages; i++) { %>
-              <a href="?page=<%= i %>&limit=<%= limit %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
-            <% } %> -->
-
-
-
-            <!-- <% if (currentPage > 1) { %>
-              <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>">Previous</a>
-            <% } %>
-    
-            <% for(let i = 1; i <= totalPages; i++) { %>
-              <a href="?page=<%= i %>&limit=<%= limit %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
-            <% } %>
-    
-            <% if (currentPage < totalPages) { %>
-              <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>">Next</a>
-            <% } %> -->
-
-
 
             <% if (currentPage > 1) { %>
               <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>&searchTerm=<%= searchTerm %>">Previous</a>
@@ -190,25 +151,6 @@
 
           </div>
         </div>
-
-
-        <!-- <div class="page-list">
-                    <ul class="pagination">
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                          </a>
-                        </li>
-                      </ul>
-                </div> -->
 
         <footer>
           <p>© 2023 All Rights Reserved. Stackup</p>
@@ -357,17 +299,6 @@
             </select>
           </div>
         </div>
-
-        <!-- <div class="row m-2">
-                <div class="col-md-6 my-2">
-                  <label for="userName" class="text form-label star">User Name</label>
-                  <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="userName" placeholder="Enter User Name">
-                </div>
-                <div class="col-md-6 my-2">
-                  <label for="password" class="text form-label star">Password</label>
-                  <input type="text" class="holder shadow-none form-control p-3 rounded-4" id="password" placeholder="Enter Password">
-                </div>
-              </div> -->
 
         <div class="row pb-4 m-2">
           <div class="col-md-6 my-2">
